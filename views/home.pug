@@ -1,0 +1,24 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title FForum
+    body
+        header 
+            if(user)
+                p Welcome back #{user.nom}
+                a(href="/logout") Logout
+            else 
+                a(href="/login") Login
+        if(user)
+            form(action="/question", method="post") 
+                .row 
+                    input(type="text" name="question" placeholder="Votre question ici...")
+                button Envoyer
+        .questions-wrapper 
+            each qs in questions 
+                .question 
+                    p #{qs.date.toDateString()} #{qs.user_id.email}
+                    p #{qs.question}
+                    a(href=`/question/${qs._id.toString()}`) Reponses

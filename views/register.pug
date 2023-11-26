@@ -1,0 +1,27 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Register
+    body 
+        h1 Create new account 
+        form(action="/register", method="post") 
+            .row 
+                label Nom 
+                input(type="text" name="nom" value=(nom || ""))
+            .row 
+                label Email 
+                input(type="email", name="email" value=(email || ""))
+                if(error.email)
+                    span #{error.email}
+            .row 
+                label Password 
+                input(type="password", name="password" value=(password || ""))
+            .row 
+                label Confirm Password 
+                input(type="password", name="cfpassword" value=(cfpassword || "")) 
+                if(error.cfpassword)
+                    span #{error.cfpassword}
+            .row 
+                button Register

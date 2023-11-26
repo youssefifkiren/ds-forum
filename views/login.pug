@@ -1,0 +1,22 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Login
+    body 
+        h1 Login to FForum 
+        if(error)
+            p.error Error: #{error}
+        form(action="/login", method="post") 
+            .row 
+                label Email 
+                input(type="email", name="email" value=(email || ""))
+            .row 
+                label Password 
+                input(type="password", name="password" value=(password || ""))
+            .row 
+                button Login
+            .row 
+                p not a member? 
+                    a(href="/register") Join FForum
